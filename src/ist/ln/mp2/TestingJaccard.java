@@ -13,7 +13,7 @@ import java.util.Set;
 public class TestingJaccard extends LexicalTest{
 	Set<String> knownWords = null;
 	
-	double threshold = 0.7;
+	double threshold = 0.24;
 
 	public TestingJaccard(Set<String> knownWords) {
 		super(knownWords);
@@ -41,7 +41,7 @@ public class TestingJaccard extends LexicalTest{
 			System.out.println("res: " + res);
 			System.out.println("----------------------");
 			
-			if(res >= threshold){
+			if(1 - res <= threshold){
 				resString.add(s);
 			}
 		}
