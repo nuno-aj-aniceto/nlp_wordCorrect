@@ -1,4 +1,3 @@
-/** [miniprojecto2] - ist.ln.mp2/LexicalTest.java - 18/Nov/2012 **/
 package ist.ln.mp2;
 
 import java.io.BufferedReader;
@@ -48,7 +47,7 @@ public abstract class LexicalTest implements Runnable {
 		System.out.println("Type the words seperated by space or CTRL+C to exit: ");
 		
 		while(true) {
-			System.out.print("> "); // println
+			System.out.println("> ");
 			String line = null;
 			try {
 				line = is.readLine();

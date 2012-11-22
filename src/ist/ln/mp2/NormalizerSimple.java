@@ -1,4 +1,5 @@
-package l2f.nlp;
+//package l2f.nlp;
+package ist.ln.mp2;
 
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
@@ -12,7 +13,7 @@ public class NormalizerSimple {
 	 *  -trim
 	 *  -remove ¿ characters (Punct doesn't capture it)
 	 *  
-	 * @param words: single word or sentence
+	 * @param words single word or sentence
 	 * @return single word or sentence normalized
 	 */
 	public static String normPunctLCase(String words){
@@ -26,8 +27,8 @@ public class NormalizerSimple {
 	 *  -trim
 	 *  -remove all diacritical marks (´`~^, etc)
 	 * 
-	 * @param words
-	 * @return
+	 * @param words the input String to be normalized
+	 * @return a normalized String
 	 */
 	public static String normPunctLCaseDMarks(String words){
 		return Normalizer.normalize(NormalizerSimple.normPunctLCase(words), Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
@@ -35,8 +36,8 @@ public class NormalizerSimple {
 	
 	/**
 	 * remove all diacritical marks (´`~^, etc)
-	 * @param words
-	 * @return
+	 * @param words the input String to be normalized
+	 * @return a normalized String
 	 */
 	public static String normDMarks(String words){
 		return Normalizer.normalize(words, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");

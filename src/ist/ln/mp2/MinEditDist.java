@@ -1,6 +1,6 @@
 package ist.ln.mp2;
 
-import java.lang.*;
+//import java.lang.*;
 
 public class MinEditDist {
 	

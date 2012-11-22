@@ -1,4 +1,3 @@
-/** [miniprojecto2] - ist.ln.mp2/MP2BaseLexicalTest.java - 18/Nov/2012 **/
 package ist.ln.mp2;
 
 import java.io.BufferedReader;
@@ -85,7 +84,6 @@ public class MP2BaseLexicalTest extends LexicalTest {
 				words.add(line);
 			}
 		}
-		is.close();
 		
 		// Creating the lexical test
 		LexicalTest lt = new MP2BaseLexicalTest(words);

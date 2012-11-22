@@ -28,7 +28,7 @@ public class Dice {
 			}
 		}
 		
-		System.out.println("intersection: " + intersection);
+		//System.out.println("intersection: " + intersection);
 		
 		return intersection.size();
 	}
