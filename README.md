@@ -7,6 +7,6 @@ Como correr:
 
  javac ist/ln/mp2/*.java ;
 
- java -cp . ist.ln.mp2.MP2Team5LexicalTester ../resources/edgarKnownWords.txt
+ java -cp . ist.ln.mp2.Lexer ../resources/edgarKnownWords.txt
 
  Nuno
