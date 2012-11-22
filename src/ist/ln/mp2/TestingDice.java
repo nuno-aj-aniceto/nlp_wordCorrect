@@ -34,15 +34,8 @@ public class TestingDice extends LexicalTest{
 		for(String s : knownWords){
 			
 			Dice d = new Dice(_word, s);
-			
-			//System.out.println("----------------------");
-			//System.out.println("threshold: " + threshold);
-			//System.out.println("word: " + _word); 
-			//System.out.println("s: " + s); 
-			
 			double res = d.checkDice();
 			
-			//System.out.println("res: " + res);
 			
 			if( 1-res < threshold){
 				
@@ -62,11 +55,6 @@ public class TestingDice extends LexicalTest{
 		}
 		
 		ArrayList<String> resString = new ArrayList<String>();
-
-		
-		
-		//System.out.println("mapRes: " + mapRes);
-		//System.out.println("----------------------");
 		
 		for (ArrayList<String> value : mapRes.values()) {
 				if(resString.size() > 5){

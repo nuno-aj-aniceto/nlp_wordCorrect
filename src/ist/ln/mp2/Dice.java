@@ -43,8 +43,6 @@ public class Dice {
 			}
 		}
 		
-		System.out.println("intersection: " + intersection);
-		
 		return intersection.size();
 	}
 	
@@ -58,11 +56,4 @@ public class Dice {
 		return (2*i)/(x+y);
 		
 	}
-	
-	/**public static void main(String[] args){
-		
-		Jaccard j = new Jaccard("saturday", "sunday");
-		
-		System.out.println(j.checkJaccard());
-	}*/
 }

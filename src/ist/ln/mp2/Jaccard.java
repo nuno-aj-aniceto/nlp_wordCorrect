@@ -36,8 +36,6 @@ public class Jaccard {
 			}
 		}
 		
-		//System.out.println("union: " + union);
-		
 		return union.size();
 	}
 	
@@ -56,8 +54,6 @@ public class Jaccard {
 			}
 		}
 		
-		//System.out.println("intersection: " + intersection);
-		
 		return intersection.size();
 	}
 	
@@ -69,11 +65,4 @@ public class Jaccard {
 		return i/j;
 		
 	}
-	
-	/**public static void main(String[] args){
-		
-		Jaccard j = new Jaccard("saturday", "sunday");
-		
-		System.out.println(j.checkJaccard());
-	}*/
 }

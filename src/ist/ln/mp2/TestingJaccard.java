@@ -32,16 +32,7 @@ public class TestingJaccard extends LexicalTest{
 		for(String s : knownWords){
 			
 			Jaccard j = new Jaccard(_word, s);
-			
-			//System.out.println("----------------------");
-			//System.out.println("threshold: " + threshold);
-			//System.out.println("word: " + _word); 
-			//System.out.println("s: " + s); 
-			
 			double res = j.checkJaccard();
-			
-			//System.out.println("res: " + res);
-			//System.out.println("----------------------");
 			
 			if(1 - res <= threshold){
 				ArrayList<String> l = new ArrayList<String>();
