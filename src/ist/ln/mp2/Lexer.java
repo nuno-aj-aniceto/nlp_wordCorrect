@@ -63,9 +63,10 @@ public class Lexer extends LexicalTest {
 
 		/** filtering Thresholds **/
 		this.minimumEditingDistanceThreshold = 5; // todo: test
-		this.LevenshteinDistanceThreshold = 3; // todo: test
+		this.LevenshteinDistanceThreshold = 6; // todo: test
 		this.DiceCoefficientThreshold = 0.5; // todo: test
-		this.JaccardCoefficientThreshold = 0.24; // todo: test
+		//this.JaccardCoefficientThreshold = 0.24; // todo: test
+		this.JaccardCoefficientThreshold = 0.5; // todo: test
 		this.hybridHeuristicThreshold = 1.0; // todo: test
 
 		/** eigenvalues for balancing data **/
@@ -76,7 +77,23 @@ public class Lexer extends LexicalTest {
 	 */
 	@Override
 	public List<String> test(String word) {
-		String normalizedWord = NormalizerSimple.normPunctLCaseDMarks(word);
+// 		Testes contra string "Saturday"
+//		String target = "saturday";
+//		System.out.print("source -- size: " + Lexer.stringToSet(word).size() + " --- ");
+//		System.out.println(Lexer.stringToSet(word));
+//		System.out.print("\ntarget -- size: " + Lexer.stringToSet(target).size() + " --- ");
+//		System.out.println(Lexer.stringToSet(target));
+//		
+//		System.out.println("\nunion -- size: " + Lexer.union(Lexer.stringToSet(word), Lexer.stringToSet(target)).size() + " --- ");
+//		System.out.print(Lexer.union(Lexer.stringToSet(word), Lexer.stringToSet(target)));
+//		System.out.println("\nintersection -- size: " + Lexer.intersection(Lexer.stringToSet(word), Lexer.stringToSet(target)).size());
+//		System.out.print(Lexer.intersection(Lexer.stringToSet(word), Lexer.stringToSet(target)) + " --- ");
+//		System.out.println("\nJaccard:    " + Lexer.computeJaccard(word, target));
+//		System.out.println("\nDice: " + Lexer.computeDice(word, target));
+		
+		
+		//String normalizedWord = NormalizerSimple.normPunctLCaseDMarks(word);
+		String normalizedWord = NormalizerSimple.normPunctLCase(word);
 		ArrayList<String> result = new ArrayList<String>(
 				this.maximumResultWords);
 		ArrayList<OutputNode> evaluationTable = new ArrayList<OutputNode>();
@@ -89,24 +106,28 @@ public class Lexer extends LexicalTest {
 			String knownNormalizedWord = knownNode.getNormalizedString();
 
 			// compare (normalized) strings using Jaccard's Index
-			double JaccardValue = (new Jaccard(normalizedWord,
-					knownNormalizedWord)).checkJaccard();
+			//double JaccardValue = (new Jaccard(normalizedWord, knownNormalizedWord)).checkJaccard();
+			double JaccardValue = computeJaccard(normalizedWord, knownNormalizedWord);
+			//System.out.println("Jaccard [ " + normalizedWord + " + " + knownNormalizedWord + " ] == " + JaccardValue);
 			if (JaccardValue < this.JaccardCoefficientThreshold)
 				continue;
 
 			// compare (normalized) strings using Dice's Coefficient
-			double DiceValue = (new Dice(normalizedWord, knownNormalizedWord)).checkDice();
+			//double DiceValue = (new Dice(normalizedWord, knownNormalizedWord)).checkDice();
+			double DiceValue = computeDice(normalizedWord, knownNormalizedWord);
 			if (DiceValue < this.DiceCoefficientThreshold)
 				continue;
 
 			// compare (normalized) strings using Minimum Editing Distance
 			// [Wagner-Fischer algorithm]
-			int MinimumEditingDistanceValue = computeMinimumEditingDistance(normalizedWord, knownNormalizedWord);
+			int MinimumEditingDistanceValue = computeMinimumEditingDistance(
+					normalizedWord, knownNormalizedWord);
 			if (MinimumEditingDistanceValue > this.minimumEditingDistanceThreshold)
 				continue;
 
 			// compare (normalized) strings using Levenshtein's Distance
-			int LevenshteinDistanceValue = computeLevenshteinDistance(normalizedWord, knownNormalizedWord);
+			int LevenshteinDistanceValue = computeLevenshteinDistance(
+					normalizedWord, knownNormalizedWord);
 			if (LevenshteinDistanceValue > this.LevenshteinDistanceThreshold)
 				continue;
 
@@ -114,25 +135,34 @@ public class Lexer extends LexicalTest {
 			// this is a combination of each (heuristic) value calculated before
 			// Therefore this heuristic possesses an acummulated entropy of each
 			// value, normalizing and combining their strengths (and weaknesses)
-			
+
 			double invertDiceValue, invertJaccardValue, hybridHeuristicValue;
 			double hybridHeuristicValue2; // todo: test
-			
-			if(DiceValue == 0)
+
+			// invert values: can do (1/x) or (1-x)
+			// 1/x give more accurate data (as it is not linear)
+
+			// invertDiceValue = 1-DiceValue;
+			// invertJaccardValue = 1-JaccardValue;
+
+			if (DiceValue == 0)
 				invertDiceValue = 0;
 			else
-				invertDiceValue = 1/DiceValue;
-			
-			if(JaccardValue == 0)
+				invertDiceValue = 1 / DiceValue;
+
+			if (JaccardValue == 0)
 				invertJaccardValue = 0;
 			else
-				invertJaccardValue = 1/JaccardValue;
-			
+				invertJaccardValue = 1 / JaccardValue;
+
+			// calculate Hybrid Heuristic: can use '+' or '*' for the
+			// Jaccard/Dice values
 			hybridHeuristicValue = (invertDiceValue * invertJaccardValue)
 					* (MinimumEditingDistanceValue + LevenshteinDistanceValue);
+
 			hybridHeuristicValue2 = (invertDiceValue + invertJaccardValue)
 					* (MinimumEditingDistanceValue + LevenshteinDistanceValue);
-			
+
 			if (hybridHeuristicValue < this.hybridHeuristicThreshold) {
 				continue;
 			}
@@ -214,6 +244,54 @@ public class Lexer extends LexicalTest {
 
 		// Creating a console for testing
 		lt.run();
+	}
+
+	public static HashSet<Character> union(HashSet<Character> x, HashSet<Character> y) {
+		HashSet<Character> t = new HashSet<Character>(x);
+		t.addAll(y);
+		return t;
+	}
+
+	public static HashSet<Character> intersection(HashSet<Character> x, HashSet<Character> y) {
+		HashSet<Character> t = new HashSet<Character>(x);
+		t.retainAll(y);
+		return t;
+	}
+
+	public static HashSet<Character> stringToSet(String string) {
+		HashSet<Character> set = new HashSet<Character>();
+		
+		for (int i = 0; i < string.length(); i++) {
+			set.add(string.charAt(i));
+		}
+		return set;
+	}
+
+	public static float computeJaccard(String sourceString, String targetString) {
+		float result;
+		
+		HashSet<Character> source = stringToSet(sourceString);
+		HashSet<Character> target = stringToSet(targetString);
+		
+		HashSet<Character> intersection = intersection(source, target);
+		HashSet<Character> union = union(source, target);
+		
+		result = ((float)intersection.size())/((float)union.size());
+		
+		return result;
+	}
+
+	public static float computeDice(String sourceString, String targetString) {
+		float result;
+		
+		HashSet<Character> source = stringToSet(sourceString);
+		HashSet<Character> target = stringToSet(targetString);
+		
+		HashSet<Character> intersection = intersection(source, target);
+		
+		result = ((float)2*intersection.size())/((float)(source.size()+target.size()));
+		
+		return result;
 	}
 
 	/**
