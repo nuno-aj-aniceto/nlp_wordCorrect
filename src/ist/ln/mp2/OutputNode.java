@@ -11,19 +11,19 @@ public class OutputNode {
 	private KnownWordNode inputNode;
 	
 	/** The Dice value. */
-	private double DiceValue;	
+	private float DiceValue;	
 
 	/** The Jaccard value. */
-	private double JaccardValue;
+	private float JaccardValue;
 
-	/** The Minimum editing distance value. */
-	private double MinimumEditingDistanceValue;
+	/** The Minimum edit distance value. */
+	private float MinimumEditDistanceValue;
 	
-	/** The Levenshtein distance value. */
-	private double LevenshteinDistanceValue;
+	/** The Levenshtein's distance value. */
+	private float LevenshteinDistanceValue;
 	
-	/** The hybrid heuristic value. */
-	private double hybridHeuristicValue;
+	/** The heuristic value. */
+	private float heuristic;
 	
 	/**
 	 * Instantiates a new output node.
@@ -47,71 +47,71 @@ public class OutputNode {
 	/**
 	 * @return the DiceValue
 	 */
-	public double getDiceValue() {
+	public float getDiceValue() {
 		return this.DiceValue;
 	}
 
 	/**
 	 * @return the JaccardValue
 	 */
-	public double getJaccardValue() {
+	public float getJaccardValue() {
 		return this.JaccardValue;
 	}
 
 	/**
 	 * @return the LevenshteinDistanceValue
 	 */
-	public double getLevenshteinDistanceValue() {
+	public float getLevenshteinDistanceValue() {
 		return this.LevenshteinDistanceValue;
 	}
 	
 	/**
-	 * @return the minimumEditingDistanceValue
+	 * @return the minimumEditDistanceValue
 	 */
-	public double getMinimumEditingDistanceValue() {
-		return this.MinimumEditingDistanceValue;
+	public float getMinimumEditDistanceValue() {
+		return this.MinimumEditDistanceValue;
 	}
 	
 	/**
-	 * @return the hybridHeuristicValue
+	 * @return the heuristic
 	 */
-	public double getHybridHeuristicValue() {
-		return this.hybridHeuristicValue;
+	public float getHeuristicValue() {
+		return this.heuristic;
 	}
 	
 	/**
 	 * @param DiceValue the DiceValue to set
 	 */
-	public void setDiceValue(double DiceValue) {
+	public void setDiceValue(float DiceValue) {
 		this.DiceValue = DiceValue;
 	}
 
 	/**
 	 * @param JaccardValue the JaccardValue to set
 	 */
-	public void setJaccardValue(double JaccardValue) {
+	public void setJaccardValue(float JaccardValue) {
 		this.JaccardValue = JaccardValue;
 	}
 	
 	/**
 	 * @param LevenshteinDistanceValue the LevenshteinDistanceValue to set
 	 */
-	public void setLevenshteinDistanceValue(double LevenshteinDistanceValue) {
+	public void setLevenshteinDistanceValue(float LevenshteinDistanceValue) {
 		this.LevenshteinDistanceValue = LevenshteinDistanceValue;
 	}
 
 	/**
-	 * @param MinimumEditingDistanceValue the MinimumEditingDistanceValue to set
+	 * @param MinimumEditDistanceValue the MinimumEditDistanceValue to set
 	 */
-	public void setMinimumEditingDistanceValue(double MinimumEditingDistanceValue) {
-		this.MinimumEditingDistanceValue = MinimumEditingDistanceValue;
+	public void setMinimumEditDistanceValue(float MinimumEditDistanceValue) {
+		this.MinimumEditDistanceValue = MinimumEditDistanceValue;
 	}
 	
 	/**
-	 * @param hybridHeuristicValue the hybridHeuristicValue to set
+	 * @param heuristicValue the heuristic to set
 	 */
-	public final void setHybridHeuristicValue(double hybridHeuristicValue) {
-		this.hybridHeuristicValue = hybridHeuristicValue;
+	public final void setHeuristicValue(float heuristicValue) {
+		this.heuristic = heuristicValue;
 	}
 	
 }

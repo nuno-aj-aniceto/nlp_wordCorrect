@@ -48,7 +48,6 @@ public class KnownWordNode {
 	 */
 	public final void setString(String inputString) {
 		this.originalString = inputString;
-		//this.normalizedString = NormalizerSimple.normPunctLCaseDMarks(inputString);
-		this.normalizedString = NormalizerSimple.normPunctLCase(inputString);
+		this.normalizedString = NormalizerSimple.normPunctLCaseDMarks(inputString);
 	}
 }
