@@ -5,9 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeMap;
 
 
 public class TestingJaccard extends LexicalTest{
@@ -25,24 +27,50 @@ public class TestingJaccard extends LexicalTest{
 		
 		String _word = NormalizerSimple.normPunctLCaseDMarks(word);
 		
-		List<String> resString = new ArrayList<String>();
+		TreeMap<Double, ArrayList<String>> mapRes = new TreeMap<Double, ArrayList<String>>(Collections.reverseOrder());
 		
 		for(String s : knownWords){
 			
 			Jaccard j = new Jaccard(_word, s);
 			
-			System.out.println("----------------------");
-			System.out.println("threshold: " + threshold);
-			System.out.println("word: " + _word); 
-			System.out.println("s: " + s); 
+			//System.out.println("----------------------");
+			//System.out.println("threshold: " + threshold);
+			//System.out.println("word: " + _word); 
+			//System.out.println("s: " + s); 
 			
 			double res = j.checkJaccard();
 			
-			System.out.println("res: " + res);
-			System.out.println("----------------------");
+			//System.out.println("res: " + res);
+			//System.out.println("----------------------");
 			
 			if(1 - res <= threshold){
-				resString.add(s);
+				ArrayList<String> l = new ArrayList<String>();
+				
+				if(mapRes.containsKey(res)){
+					l = mapRes.get(res);
+					l.add(s);
+				}
+				
+				else{
+					l.add(s);
+					mapRes.put(res, l);
+				}
+			}
+		}
+		
+		ArrayList<String> resString = new ArrayList<String>();
+		
+		for (ArrayList<String> value : mapRes.values()) {
+			if(resString.size() > 5){
+				return resString;
+			}
+			else{
+				for(String s : value){
+					resString.add(s);
+					if(resString.size() >= 5){
+						return resString;
+					}
+				}
 			}
 		}
 		

@@ -36,11 +36,13 @@ public class Jaccard {
 			}
 		}
 		
+		//System.out.println("union: " + union);
+		
 		return union.size();
 	}
 	
 	public int intersection(){
-		ArrayList<String> union = new ArrayList<String>();
+		ArrayList<String> intersection = new ArrayList<String>();
 		int str1_len = _str1.length();
 		
 		for(int i=0; i < str1_len; i++){
@@ -48,13 +50,15 @@ public class Jaccard {
 			String s = _str1.charAt(i)+"";
 			
 			if(_str2.contains(s)){
-				if(!union.contains(s)){
-					union.add(s);
+				if(!intersection.contains(s)){
+					intersection.add(s);
 				}
 			}
 		}
-	
-		return union.size();
+		
+		//System.out.println("intersection: " + intersection);
+		
+		return intersection.size();
 	}
 	
 	
