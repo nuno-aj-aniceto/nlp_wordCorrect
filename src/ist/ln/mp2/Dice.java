@@ -1,34 +1,47 @@
-package ist.ln.mp2;
-
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Dice {
 
-	private String _str1 = "";
-	private String _str2 = "";
+	private Set<String> _str1 = new HashSet<String>();
+	private Set<String> _str2 = new HashSet<String>();
 
 	public Dice(String str1, String str2){
 	
-		_str1 = str1;
-		_str2 = str2; 
+		int str1_len = str1.length();
+		int str2_len = str2.length();
+		
+		for(int i=0; i < str1_len; i++){
+			
+			String c = str1.charAt(i)+"";
+			
+			if(!_str1.contains(c)){
+				_str1.add(c);
+			}
+		}
+	
+		for(int i=0; i < str2_len; i++){
+			
+			String c = str2.charAt(i)+"";
+			
+			if(!_str2.contains(c)){
+				_str2.add(c);
+			}
+		}
+		
 	}
 	
 	public int intersection(){
 		ArrayList<String> intersection = new ArrayList<String>();
-		int str1_len = _str1.length();
 		
-		for(int i=0; i < str1_len; i++){
-			
-			String s = _str1.charAt(i)+"";
-			
-			if(_str2.contains(s)){
-				if(!intersection.contains(s)){
-					intersection.add(s);
-				}
+		for(String c : _str1){
+			if(_str2.contains(c)){
+				intersection.add(c);
 			}
 		}
 		
-		//System.out.println("intersection: " + intersection);
+		System.out.println("intersection: " + intersection);
 		
 		return intersection.size();
 	}
@@ -37,8 +50,8 @@ public class Dice {
 	public double checkDice(){
 		
 		double i = intersection();
-		double x = _str1.length();
-		double y = _str2.length();
+		double x = _str1.size();
+		double y = _str2.size();
 		
 		return (2*i)/(x+y);
 		

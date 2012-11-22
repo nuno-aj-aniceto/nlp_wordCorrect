@@ -1,5 +1,3 @@
-package ist.ln.mp2;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +11,7 @@ import java.util.Set;
 public class TestingDice extends LexicalTest{
 	Set<String> knownWords = null;
 	
-	double threshold = 0.24;
+	double threshold = 0.125;
 
 	public TestingDice(Set<String> knownWords) {
 		super(knownWords);
@@ -41,7 +39,7 @@ public class TestingDice extends LexicalTest{
 			System.out.println("res: " + res);
 			System.out.println("----------------------");
 			
-			if( 1-res <= threshold){
+			if( 1-res < threshold){
 				resString.add(s);
 			}
 		}
