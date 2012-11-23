@@ -10,7 +10,7 @@ Para correr a aplicação, basta
 > a inicialização da aplicação deve ser feita a partir da pasta ./src/
  java -cp . ist.ln.mp2.Lexer ../resources/edgarKnownWords.txt
 
- O ficheiro de configuração encontra-se na pasta resources e é lido automaticamente pelo que é necessário correr a aplicação da pasta ./src/ para que as configurações sejam avaliadas.
+ O ficheiro de configuração encontra-se na pasta resources (ficheiro ./resources/Lexer.conf) e é lido automaticamente pelo que é necessário correr a aplicação da pasta ./src/ para que as configurações sejam avaliadas.
 
 
  Neste exemplo assumimos que o ficheiro contendo o léxico se encontra na pasta "../resources/edgarKnownWords.txt"

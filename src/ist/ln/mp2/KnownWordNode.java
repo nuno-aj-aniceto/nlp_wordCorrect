@@ -5,6 +5,11 @@ import ist.ln.mp2.NormalizerSimple;
 
 /**
  * The Class KnownWordNode.
+ * @author Grupo 5
+ * @author nº 56917 - Ana Santos 	<annara.snow@gmail.com>
+ * @author nº 57384 - Júlio Machado <jules_informan@hotmail.com>
+ * @author nº 57682 - Nuno Aniceto 	<nuno.aja@gmail.com>
+ * @version 23.November.2012
  */
 public class KnownWordNode {
 	
