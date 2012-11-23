@@ -22,11 +22,6 @@ import java.util.Set;
  * The Class Lexer.
  */
 
-/*
- * TODO
- * >> report
- * >> README
- */
 public class Lexer extends LexicalTest {
 	/** The Constant maximumResultWords. */
 	private static final int maximumResultWords = 5;
@@ -89,8 +84,8 @@ public class Lexer extends LexicalTest {
 		/** filtering Thresholds **/
 		this.JaccardIndexThreshold 			= 0.5f;
 		this.DiceCoefficientThreshold 		= 0.75f;
-		this.minimumEditDistanceThreshold 	= 8;
-		this.LevenshteinDistanceThreshold 	= 9;
+		this.minimumEditDistanceThreshold 	= 5;
+		this.LevenshteinDistanceThreshold 	= 6;
 
 		/** weight values for balancing data **/
 		this.JaccardIndexWeight 		= 1.0f;
@@ -186,9 +181,6 @@ public class Lexer extends LexicalTest {
 	                }
                 }
                 
-                if(verboseMode)
-                	System.out.format("[verboseMode] h: %3.5f -- [%s]\n", heuristic, knownNormalizedWord);
-				
                 // output node that contains every detail (so sorting is easy) ------
 				OutputNode outputNode = new OutputNode(knownNode);
 
@@ -201,7 +193,7 @@ public class Lexer extends LexicalTest {
 				if(testLevenshteinDistance) 
 					outputNode.setLevenshteinDistanceValue(LevenshteinDistanceValue);
 
-				outputNode.setHeuristicValue(-heuristic*1000000);
+				outputNode.setHeuristicValue(heuristic);
 
 				evaluationTable.add(outputNode);
 			}
@@ -210,19 +202,32 @@ public class Lexer extends LexicalTest {
 			final Comparator<OutputNode> OUTPUTNODE_COMPARATOR = new Comparator<OutputNode>() {
 				@Override
 				public int compare(OutputNode a, OutputNode b) {
-					return (int) (a.getHeuristicValue() - b
-							.getHeuristicValue());
+					return (int)
+                        (1000000*(b.getHeuristicValue()-a.getHeuristicValue()));
 				}
 			};
 			Collections.sort(evaluationTable, OUTPUTNODE_COMPARATOR);
 
 			// prepares the output
-			for (OutputNode outputNode : evaluationTable) {
-				result.add(outputNode.getInputNode().getOriginalString());
+            for (OutputNode outputNode : evaluationTable) {
+                String outputString = "";
+                if(verboseMode) {
+                    String formattedString;
+                    float heuristic = outputNode.getHeuristicValue();
+                	if(testJaccardIndex || testDiceCoefficient)
+                        formattedString = String.format("%3.5f", heuristic);
+                    else
+                        formattedString = String.format("%3.1f", heuristic);
+                    outputString  = " [h: " + formattedString + " ] ";
+                }
 
-				if (result.size() >= maximumResultWords)
-					break;
-			}
+                outputString += outputNode.getInputNode().getOriginalString();
+                
+                result.add(outputString);
+
+                if (result.size() >= maximumResultWords)
+                    break;
+            }
 		}
 
 		return result;
@@ -354,13 +359,17 @@ public class Lexer extends LexicalTest {
 			
 			lineScanner.close();
 		} catch(FileNotFoundException e) {
-			System.out.println("ERROR: could not load configuration's file '" + pathToFile + "'");
-			e.printStackTrace();
+            System.err.println();
+			System.err.println("ERROR: could not load configuration's file '" + pathToFile + "'");
+            System.err.println("Please confirm if you are working on the ./src/ directory");
+            System.err.println();
+			//e.printStackTrace();
 		}
 
         /** filtering Thresholds **/
 		if(verboseMode) {
-			System.out.println("[verboseMode ON]");
+            System.out.println();
+			System.out.println("[notice: verboseMode activated]");
 			System.out.println();
 			System.out.println(">> configuration ------------------------");
 			System.out.println();

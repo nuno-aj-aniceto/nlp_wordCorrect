@@ -1,0 +1,71 @@
+Loading known words...
+
+[notice: verboseMode activated]
+
+>> configuration ------------------------
+
+--- flags ---
+testJaccardIndex             = false
+testDiceCoefficient          = false
+testMinimumEditDistance      = true
+testLevenshteinDistance      = false
+--- thresholds ---
+JaccardIndexThreshold        = 0.5
+DiceCoefficientThreshold     = 0.75
+minimumEditDistanceThreshold = 4
+LevenshteinDistanceThreshold = 6
+--- weights ---
+JaccardIndexWeight           = 1.0
+DiceCoefficientWeight        = 1.0
+minimumEditDistanceWeight    = 1.0
+LevenshteinDistanceWeight    = 1.0
+
+<< --------------------------------------
+
+Type the words seperated by space or CTRL+C to exit: 
+> 
+For the word 'aeiou' found the following candidates:
+ -  [h: -2,0 ] criou
+ -  [h: -2,0 ] levou
+ -  [h: -3,0 ] feitos
+ -  [h: -3,0 ] feito
+ -  [h: -3,0 ] you
+For the word 'toto' found the following candidates:
+ -  [h: -1,0 ] todo
+ -  [h: -2,0 ] porto
+ -  [h: -2,0 ] tão
+ -  [h: -2,0 ] todos
+ -  [h: -2,0 ] tipo
+For the word 'bola' found the following candidates:
+ -  [h: -1,0 ] boa
+ -  [h: -1,0 ] olá
+ -  [h: -2,0 ] bom
+ -  [h: -2,0 ] boas
+ -  [h: -2,0 ] lá
+For the word 'viv' found the following candidates:
+ -  [h: -1,0 ] vive
+ -  [h: -1,0 ] vivo
+ -  [h: -2,0 ] viuvo
+ -  [h: -2,0 ] dia
+ -  [h: -2,0 ] vivia
+For the word 'construíram' found the following candidates:
+ -  [h: -2,0 ] construída
+ -  [h: -2,0 ] construir
+ -  [h: -3,0 ] construído
+ -  [h: -3,0 ] construiu
+ -  [h: -3,0 ] construção
+For the word 'Biliotecas' found the following candidates:
+ -  [h: -2,0 ] biblioteca
+For the word 'actua' found the following candidates:
+ -  [h: -1,0 ] actual
+ -  [h: -2,0 ] altura
+ -  [h: -2,0 ] acaba
+ -  [h: -2,0 ] tua
+ -  [h: -3,0 ] lua
+For the word 'mente' found the following candidates:
+ -  [h: -1,0 ] monte
+ -  [h: -2,0 ] neste
+ -  [h: -2,0 ] deste
+ -  [h: -2,0 ] este
+ -  [h: -3,0 ] teve
+> 

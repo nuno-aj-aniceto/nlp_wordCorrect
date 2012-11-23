@@ -1,0 +1,69 @@
+Loading known words...
+
+[notice: verboseMode activated]
+
+>> configuration ------------------------
+
+--- flags ---
+testJaccardIndex             = false
+testDiceCoefficient          = true
+testMinimumEditDistance      = false
+testLevenshteinDistance      = false
+--- thresholds ---
+JaccardIndexThreshold        = 0.5
+DiceCoefficientThreshold     = 0.75
+minimumEditDistanceThreshold = 4
+LevenshteinDistanceThreshold = 6
+--- weights ---
+JaccardIndexWeight           = 1.0
+DiceCoefficientWeight        = 1.0
+minimumEditDistanceWeight    = 1.0
+LevenshteinDistanceWeight    = 1.0
+
+<< --------------------------------------
+
+Type the words seperated by space or CTRL+C to exit: 
+> 
+For the word 'aeiou' found the following candidates:
+ -  [h: 0,80000 ] leilão
+ -  [h: 0,76923 ] arquiteto
+For the word 'toto' found the following candidates:
+ -  [h: 0,80000 ] totoloto
+ -  [h: 0,80000 ] tão
+ -  [h: 0,80000 ] todo
+For the word 'bola' found the following candidates:
+ -  [h: 0,88889 ] totobola
+ -  [h: 0,85714 ] boa
+ -  [h: 0,85714 ] olá
+ -  [h: 0,75000 ] boas
+ -  [h: 0,75000 ] cabo
+For the word 'viv' found the following candidates:
+ -  [h: 0,80000 ] vivia
+ -  [h: 0,80000 ] vai
+ -  [h: 0,80000 ] vive
+ -  [h: 0,80000 ] vivo
+For the word 'construíram' found the following candidates:
+ -  [h: 0,90000 ] construída
+ -  [h: 0,88889 ] romantismo
+ -  [h: 0,88889 ] construiu
+ -  [h: 0,88889 ] construção
+ -  [h: 0,88889 ] construir
+For the word 'Biliotecas' found the following candidates:
+ -  [h: 0,94118 ] biblioteca
+ -  [h: 0,88889 ] instalações
+ -  [h: 0,87500 ] estilísticas
+ -  [h: 0,87500 ] castelo
+ -  [h: 0,82353 ] ecletismo
+For the word 'actua' found the following candidates:
+ -  [h: 0,88889 ] actual
+ -  [h: 0,88889 ] tchau
+ -  [h: 0,88889 ] custa
+ -  [h: 0,85714 ] tua
+ -  [h: 0,80000 ] executa
+For the word 'mente' found the following candidates:
+ -  [h: 0,88889 ] monte
+ -  [h: 0,85714 ] tem
+ -  [h: 0,75000 ] neste
+ -  [h: 0,75000 ] nome
+ -  [h: 0,75000 ] tens
+> 

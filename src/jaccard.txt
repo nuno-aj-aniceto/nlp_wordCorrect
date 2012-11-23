@@ -1,0 +1,75 @@
+Loading known words...
+
+[notice: verboseMode activated]
+
+>> configuration ------------------------
+
+--- flags ---
+testJaccardIndex             = true
+testDiceCoefficient          = false
+testMinimumEditDistance      = false
+testLevenshteinDistance      = false
+--- thresholds ---
+JaccardIndexThreshold        = 0.5
+DiceCoefficientThreshold     = 0.75
+minimumEditDistanceThreshold = 4
+LevenshteinDistanceThreshold = 6
+--- weights ---
+JaccardIndexWeight           = 1.0
+DiceCoefficientWeight        = 1.0
+minimumEditDistanceWeight    = 1.0
+LevenshteinDistanceWeight    = 1.0
+
+<< --------------------------------------
+
+Type the words seperated by space or CTRL+C to exit: 
+> 
+For the word 'aeiou' found the following candidates:
+ -  [h: 0,66667 ] leilão
+ -  [h: 0,62500 ] arquiteto
+ -  [h: 0,57143 ] reabriu
+ -  [h: 0,57143 ] queria
+ -  [h: 0,57143 ] leiloado
+For the word 'toto' found the following candidates:
+ -  [h: 0,66667 ] todo
+ -  [h: 0,66667 ] totoloto
+ -  [h: 0,66667 ] tão
+ -  [h: 0,50000 ] sítios
+ -  [h: 0,50000 ] tipo
+For the word 'bola' found the following candidates:
+ -  [h: 0,80000 ] totobola
+ -  [h: 0,75000 ] boa
+ -  [h: 0,75000 ] olá
+ -  [h: 0,60000 ] local
+ -  [h: 0,60000 ] boas
+For the word 'viv' found the following candidates:
+ -  [h: 0,66667 ] vivia
+ -  [h: 0,66667 ] vai
+ -  [h: 0,66667 ] vive
+ -  [h: 0,66667 ] vivo
+ -  [h: 0,50000 ] vivem
+For the word 'construíram' found the following candidates:
+ -  [h: 0,81818 ] construída
+ -  [h: 0,80000 ] construção
+ -  [h: 0,80000 ] romantismo
+ -  [h: 0,80000 ] construir
+ -  [h: 0,80000 ] construiu
+For the word 'Biliotecas' found the following candidates:
+ -  [h: 0,88889 ] biblioteca
+ -  [h: 0,80000 ] instalações
+ -  [h: 0,77778 ] castelo
+ -  [h: 0,77778 ] estilísticas
+ -  [h: 0,70000 ] instalação
+For the word 'actua' found the following candidates:
+ -  [h: 0,80000 ] custa
+ -  [h: 0,80000 ] actual
+ -  [h: 0,80000 ] tchau
+ -  [h: 0,75000 ] tua
+ -  [h: 0,66667 ] executa
+For the word 'mente' found the following candidates:
+ -  [h: 0,80000 ] monte
+ -  [h: 0,75000 ] tem
+ -  [h: 0,60000 ] neste
+ -  [h: 0,60000 ] tens
+ -  [h: 0,60000 ] nome
+> 

@@ -1,0 +1,75 @@
+Para correr a aplicação, basta
+
+> a partir da pasta do projecto, recompilar todo o código
+ cd src ;
+ rm ist/ln/mp2/*.class ;
+ javac $(find . -name "*.java") ; # ou o equivalente: javac ist/ln/mp2/*.java
+
+
+
+> a inicialização da aplicação deve ser feita a partir da pasta ./src/
+ java -cp . ist.ln.mp2.Lexer ../resources/edgarKnownWords.txt
+
+ O ficheiro de configuração encontra-se na pasta resources e é lido automaticamente pelo que é necessário correr a aplicação da pasta ./src/ para que as configurações sejam avaliadas.
+
+
+ Neste exemplo assumimos que o ficheiro contendo o léxico se encontra na pasta "../resources/edgarKnownWords.txt"
+ - na eventualidade de o querer mudar, basta alterar esse argumento da aplicação.
+ - ainda, no caso de se querer usar caminhos relativos (usando por exemplo '../') deve assumir que o directório actual é './src/'
+
+
+> Para testar uma palavra ou sequência de palavras, basta usar a interface de linha de comandos disponível.
+  Pode em alternativa testar apenas uma palavra, por exemplo para testar a palavra "teste":
+ 
+  echo "teste" | java -cp . ist.ln.mp2.Lexer ../resources/edgarKnownWords.txt
+
+  Outro exemplo:
+  echo "quem construíram Biliotecas digestivo" | java -cp . ist.ln.mp2.Lexer ../resources/edgarKnownWords.txt
+
+> o ficheiro de configuração encontra-se na pasta '../resources/Lexer.conf'
+ Os comentários no ficheiro começam com '//' ou com '#' (sem plicas) e linhas vazias são ignoradas.
+ É pressuposto haver apenas uma palavra-chave por linha.
+
+ As palavras-chave para activar ou desactivar técnicas usadas são as seguintes:
+  
+  disableAllTests
+  enableJaccardTest
+  enableDiceTest
+  enableMedTest
+  enableLevenshteinTest
+  
+  enableAllTests
+  disableJaccardTest
+  disableDiceTest
+  disableMedTest
+  disableLevenshteinTest
+
+ Note que por omissão, todos os testes são efectuados pelo que para usar apenas uma técnica se deve usar a palavra-chave 'disableAllTests' seguido da activação da técnica de teste pretendida
+
+ Para definir os valores de limite (thresholds) usam-se:
+  JaccardIndexThreshold          <decimal>
+  DiceCoefficientThreshold       <decimal>
+  minimumEditDistanceThreshold   <inteiro>
+  LevenshteinDistanceThreshold   <inteiro>
+
+Exemplo:
+  JaccardIndexThreshold           0.5
+  DiceCoefficientThreshold        0.75
+  minimumEditDistanceThreshold    8
+  LevenshteinDistanceThreshold    9
+
+ Para definir os valores de peso (weights) usam-se:
+  JaccardIndexWeight          <decimal>
+  DiceCoefficientWeight       <decimal>
+  minimumEditDistanceWeight   <decimal>
+  LevenshteinDistanceWeight   <decimal>
+
+Exemplo:
+  JaccardIndexWeight          1.0
+  DiceCoefficientWeight       1.0
+  minimumEditDistanceWeight   0.75
+  LevenshteinDistanceWeight   1.25
+
+ Para activar o modo verboso (que imprime os valores da heurística de cada palavra)
+  verboseMode
+

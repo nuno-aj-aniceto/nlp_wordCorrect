@@ -1,0 +1,72 @@
+Loading known words...
+
+[notice: verboseMode activated]
+
+>> configuration ------------------------
+
+--- flags ---
+testJaccardIndex             = false
+testDiceCoefficient          = false
+testMinimumEditDistance      = false
+testLevenshteinDistance      = true
+--- thresholds ---
+JaccardIndexThreshold        = 0.5
+DiceCoefficientThreshold     = 0.75
+minimumEditDistanceThreshold = 4
+LevenshteinDistanceThreshold = 6
+--- weights ---
+JaccardIndexWeight           = 1.0
+DiceCoefficientWeight        = 1.0
+minimumEditDistanceWeight    = 1.0
+LevenshteinDistanceWeight    = 1.0
+
+<< --------------------------------------
+
+Type the words seperated by space or CTRL+C to exit: 
+> 
+For the word 'aeiou' found the following candidates:
+ -  [h: -3,0 ] ou
+ -  [h: -3,0 ] ao
+ -  [h: -3,0 ] eu
+ -  [h: -4,0 ] o
+ -  [h: -4,0 ] feito
+For the word 'toto' found the following candidates:
+ -  [h: -2,0 ] todo
+ -  [h: -3,0 ] porto
+ -  [h: -3,0 ] o
+ -  [h: -3,0 ] tão
+ -  [h: -3,0 ] todos
+For the word 'bola' found the following candidates:
+ -  [h: -1,0 ] boa
+ -  [h: -1,0 ] olá
+ -  [h: -2,0 ] boas
+ -  [h: -2,0 ] lá
+ -  [h: -3,0 ] bom
+For the word 'viv' found the following candidates:
+ -  [h: -1,0 ] vive
+ -  [h: -1,0 ] vivo
+ -  [h: -2,0 ] viuvo
+ -  [h: -2,0 ] vivia
+ -  [h: -2,0 ] vivem
+For the word 'construíram' found the following candidates:
+ -  [h: -2,0 ] construir
+ -  [h: -3,0 ] construída
+ -  [h: -4,0 ] construiu
+ -  [h: -5,0 ] construído
+ -  [h: -5,0 ] construção
+For the word 'Biliotecas' found the following candidates:
+ -  [h: -2,0 ] biblioteca
+ -  [h: -6,0 ] boas
+For the word 'actua' found the following candidates:
+ -  [h: -1,0 ] actual
+ -  [h: -2,0 ] tua
+ -  [h: -3,0 ] cá
+ -  [h: -3,0 ] altura
+ -  [h: -3,0 ] tu
+For the word 'mente' found the following candidates:
+ -  [h: -2,0 ] monte
+ -  [h: -3,0 ] me
+ -  [h: -3,0 ] este
+ -  [h: -3,0 ] te
+ -  [h: -4,0 ] neste
+> 
